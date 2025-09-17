@@ -33,6 +33,10 @@ int main() {
             printf("read %d bytes: %.*s\n", size, size, buffer);
             break;
     }
-    
-    return 1;
+
+    int result = close(fd);
+    if (result < 0) {
+        perror("Close");
+    }
+    return 0;
 }
