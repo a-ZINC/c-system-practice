@@ -11,8 +11,14 @@ int main() {
         a = 20;
         printf("child %d\n", a);
     } else {
-        sleep(5);
-        printf("parent %d\n", a);
+        sleep(1);
+        pid_t cid2 = fork();
+        if (cid2 == 0) {
+            sleep(30);
+            printf("sub-child %d\n", a);
+        } else {
+            printf("parent %d\n", a);
+        }
     }
 
     return 0;
